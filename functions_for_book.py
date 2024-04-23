@@ -16,5 +16,13 @@ def create_book():
     books.append(new_book)
     return jsonify(new_book), 201
 
+# Read
+@app.route('/books', methods=['GET'])
+def get_books():
+    return jsonify(books), 200
+
+@app.route('/books/<int:book_id>', methods=['GET'])
+def get_book(book_id):
+    book = next((book for book in books if book["id"] == book_id), None)
 
 
